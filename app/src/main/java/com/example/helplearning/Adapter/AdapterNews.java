@@ -42,13 +42,14 @@ public class AdapterNews extends BaseAdapter {
         TextView tvDescription = view.findViewById(R.id.tvDescription);
         TextView tvTitle = view.findViewById(R.id.tvTitle);
         ImageView imgView = view.findViewById(R.id.imgView);
-        tvDate.setText(items.get(i).getDate());
+        String content = items.get(i).getContent();
+        String date = items.get(i).getDate();
+        tvDate.setText(date.substring(0, date.indexOf("+0700")));
         tvDescription.setText(items.get(i).getDescription());
         tvTitle.setText(items.get(i).getTitle());
-        String content = items.get(i).getContent();
         String image = null;
-//        image = content.substring(content.indexOf("img src=") + 9, content.indexOf("alt=\"{") - 2);
-//        Picasso.get().load(image).into(imgView);
+        image = content.substring(content.indexOf("img src=") + 9, content.indexOf("alt=\"{") - 2);
+        Picasso.get().load(image).into(imgView);
         return view;
     }
 }

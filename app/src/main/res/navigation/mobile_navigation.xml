@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/nav_maps"
-        android:name="com.example.helplearning.MapsFragment"
+        android:name="com.example.helplearning.ui.MapsFragment"
         android:label="Maps"
         tools:layout="@layout/fragment_maps2" />
     <fragment
@@ -28,11 +28,7 @@
         android:label="News"
         tools:layout="@layout/fragment_news" />
 
-    <fragment
-        android:id="@+id/nav_social"
-        android:name="com.example.helplearning.ui.SocialFragment"
-        android:label="Social"
-        tools:layout="@layout/fragment_social" />
+
     <fragment
         android:id="@+id/nav_user"
         android:name="com.example.helplearning.ui.User"

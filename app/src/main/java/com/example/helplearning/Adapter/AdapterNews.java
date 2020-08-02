@@ -1,5 +1,6 @@
 package com.example.helplearning.Adapter;
 
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 
 import com.example.helplearning.Model.Item;
 import com.example.helplearning.R;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareButton;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -41,6 +44,7 @@ public class AdapterNews extends BaseAdapter {
         TextView tvDate = view.findViewById(R.id.tvDate);
         TextView tvDescription = view.findViewById(R.id.tvDescription);
         TextView tvTitle = view.findViewById(R.id.tvTitle);
+        ShareButton shareButton = view.findViewById(R.id.btnShare);
         ImageView imgView = view.findViewById(R.id.imgView);
         String content = items.get(i).getContent();
         String date = items.get(i).getDate();
@@ -50,6 +54,10 @@ public class AdapterNews extends BaseAdapter {
         String image = null;
         image = content.substring(content.indexOf("img src=") + 9, content.indexOf("alt=\"{") - 2);
         Picasso.get().load(image).into(imgView);
+        ShareLinkContent contentShare = new ShareLinkContent.Builder()
+                .setContentUrl(Uri.parse(items.get(i).getLink()))
+                .build();
+        shareButton.setShareContent(contentShare);
         return view;
     }
 }

@@ -26,11 +26,9 @@ public class HomeFragment extends Fragment {
         ImageView imgCourses = view.findViewById(R.id.course);
         ImageView imgMaps = view.findViewById(R.id.maps);
         ImageView imgNews = view.findViewById(R.id.news);
-        ImageView imgSocial = view.findViewById(R.id.social);
         imgCourses.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_courses));
         imgMaps.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_maps));
         imgNews.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_news));
-        imgSocial.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_social));
         return view;
     }
 }

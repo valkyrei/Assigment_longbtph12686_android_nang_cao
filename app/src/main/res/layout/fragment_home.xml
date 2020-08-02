@@ -63,18 +63,6 @@
             android:layout_weight="1.3"
             android:src="@drawable/news" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.6" />
-
-
-        <ImageView
-            android:id="@+id/social"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.3"
-            android:src="@drawable/social" />
 
         <ImageView
             android:layout_width="match_parent"

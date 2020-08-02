@@ -12,19 +12,19 @@
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
-        <TextView
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1.6" />
 
         <ImageView
             android:id="@+id/course"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.3"
             android:src="@drawable/learning" />
 
-        <TextView
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1.6" />
@@ -32,12 +32,12 @@
 
         <ImageView
             android:id="@+id/maps"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.3"
             android:src="@drawable/maps" />
 
-        <TextView
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1.6" />
@@ -59,8 +59,8 @@
         <ImageView
             android:id="@+id/news"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.3"
             android:src="@drawable/news" />
 
         <ImageView
@@ -72,8 +72,8 @@
         <ImageView
             android:id="@+id/social"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.3"
             android:src="@drawable/social" />
 
         <ImageView

@@ -1,6 +1,7 @@
 package com.example.helplearning.Adapter;
 
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,7 @@ public class RecyclerViewNews extends RecyclerView.Adapter<RecyclerViewNews.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int i) {
+        Log.e("View",i+"");
         String content = items.get(i).getContent();
         String date = items.get(i).getDate();
         holder.tvDate.setText(date.substring(0, date.indexOf("+0700")));

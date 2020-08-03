@@ -46,7 +46,9 @@ public class NewsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_news, container, false);
         lvListNews = view.findViewById(R.id.lvListNews);
         lvListNews.setHasFixedSize(true);
-        lvListNews.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        lvListNews.setLayoutManager(linearLayoutManager);
         items = new ArrayList<>();
         initRss("https://vietnamnet.vn/rss/giao-duc.rss");
 
@@ -112,18 +114,18 @@ public class NewsFragment extends Fragment {
             @Override
             protected void onPostExecute(Object o) {
                 super.onPostExecute(o);
-                adapterNews = new AdapterNews(items);
+//                adapterNews = new AdapterNews(items);
 //                lvListNews.setAdapter(adapterNews);
                 recyclerViewNews = new RecyclerViewNews(items);
                 lvListNews.setAdapter(recyclerViewNews);
 //                lvListNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                    @Override
-//                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                        Intent intent = new Intent(getContext(), ActivityNews.class);
-//                        intent.putExtra("link", items.get(i).getLink());
-//                        startActivity(intent);
-//                    }
-//                });
+////                    @Override
+////                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+////                        Intent intent = new Intent(getContext(), ActivityNews.class);
+////                        intent.putExtra("link", items.get(i).getLink());
+////                        startActivity(intent);
+////                    }
+////                });
 
                 recyclerViewNews.onClick(new RecyclerViewNews.OnClickItem() {
                     @Override

@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.helplearning.ActivityNews;
 import com.example.helplearning.Adapter.AdapterNews;
+import com.example.helplearning.Adapter.RecyclerViewNews;
 import com.example.helplearning.MainActivity;
 import com.example.helplearning.Model.Item;
 import com.example.helplearning.R;
@@ -34,13 +37,16 @@ import java.util.ArrayList;
 public class NewsFragment extends Fragment {
     ArrayList<Item> items;
     AdapterNews adapterNews;
-    ListView lvListNews;
+    RecyclerView lvListNews;
+    RecyclerViewNews recyclerViewNews;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_news, container, false);
         lvListNews = view.findViewById(R.id.lvListNews);
+        lvListNews.setHasFixedSize(true);
+        lvListNews.setLayoutManager(new LinearLayoutManager(getContext()));
         items = new ArrayList<>();
         initRss("https://vietnamnet.vn/rss/giao-duc.rss");
 
@@ -107,12 +113,23 @@ public class NewsFragment extends Fragment {
             protected void onPostExecute(Object o) {
                 super.onPostExecute(o);
                 adapterNews = new AdapterNews(items);
-                lvListNews.setAdapter(adapterNews);
-                lvListNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                lvListNews.setAdapter(adapterNews);
+                recyclerViewNews = new RecyclerViewNews(items);
+                lvListNews.setAdapter(recyclerViewNews);
+//                lvListNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                        Intent intent = new Intent(getContext(), ActivityNews.class);
+//                        intent.putExtra("link", items.get(i).getLink());
+//                        startActivity(intent);
+//                    }
+//                });
+
+                recyclerViewNews.onClick(new RecyclerViewNews.OnClickItem() {
                     @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    public void callBackClick(int position) {
                         Intent intent = new Intent(getContext(), ActivityNews.class);
-                        intent.putExtra("link", items.get(i).getLink());
+                        intent.putExtra("link", items.get(position).getLink());
                         startActivity(intent);
                     }
                 });

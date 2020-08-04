@@ -39,15 +39,18 @@ public class RecyclerViewNews extends RecyclerView.Adapter<RecyclerViewNews.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int i) {
-        Log.e("View",i+"");
+        Log.e("View", i + "");
         String content = items.get(i).getContent();
         String date = items.get(i).getDate();
         holder.tvDate.setText(date.substring(0, date.indexOf("+0700")));
         holder.tvDescription.setText(items.get(i).getDescription());
         holder.tvTitle.setText(items.get(i).getTitle());
         String image = null;
-        image = content.substring(content.indexOf("img src=") + 9, content.indexOf("alt=\"{") - 2);
-        Picasso.get().load(image).into(holder.imageView);
+//        image = content.substring(content.indexOf("img src=") + 9, content.indexOf("alt=\"{") - 2);
+        if (content.indexOf("img src") != -1) {
+            image = content.substring(content.indexOf("img src=") + 9, content.indexOf("alt=\"{") - 2);
+            Picasso.get().load(image).into(holder.imageView);
+        }
         ShareLinkContent contentShare = new ShareLinkContent.Builder()
                 .setContentUrl(Uri.parse(items.get(i).getLink()))
                 .build();
